@@ -92,10 +92,11 @@ class WheelSpeedPI(Node):
         dt        -- time since the last call, s
         """
 
-        # TODO: self.integral is an "object attribute" 
-        # that is initialized to zero. Changes to this variable persist across 
-        # function calls, so it can be used to integrate the error 
-        # Update it appropriately for your PI controller
+        # TODO: self.integral and self.last_u are "object attributes" 
+        # that are initialized to zero. Changes to these variables persist across 
+        # function calls.
+        # * self.integral : update this to integrate the error across multiple calls of pi_control
+        # * self.last_u : in line (131) this is set to the last saturated input which is useful for the Back-Calculation anti-windup method. Don't update this variable yourself. 
         self.integral 
         
         u = 0 # TODO: implement your controller here
